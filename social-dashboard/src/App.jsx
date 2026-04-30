@@ -15,9 +15,9 @@ const About = lazy(() => import("./components/About"));
 const Posts = lazy(() => import("./components/Posts"));
 const Users = lazy(() => import("./components/Users"));
 
-import { LoginButton } from '../../backend/login';
-import { LogoutButton } from '../../backend/logout';
-import { Profile } from '../../backend/Profile';
+import { LoginButton } from '../backend/login';
+import { LogoutButton } from '../backend/logout';
+import { Profile } from '../backend/Profile';
 
 function App(){
   return(
