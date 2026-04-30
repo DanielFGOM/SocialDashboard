@@ -25,16 +25,7 @@ function App(){
                 <LoginButton/>
                 <LogoutButton/>
             </header>
-            <Router>
-            <Routes>
-            <Route path="/" element={<Layout/>}>
-            <Route path="/Home" element={<Home/>}/>
-            <Route path="/Posts" element={<Posts/>}/>
-            <Route path="/Users" element={<Users/>}/>
-            <Route path="/About" element={<About/>}/>
-            </Route>
-            </Routes>
-        </Router>
+            
       
     </div>
 
