@@ -11,7 +11,6 @@ import{
 
 
 const Home = lazy(() => import("./components/Home"));
-const About = lazy(() => import("./components/About"));
 const Posts = lazy(() => import("./components/Posts"));
 const Users = lazy(() => import("./components/Users"));
 
