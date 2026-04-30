@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
+
 import { createRoot } from 'react-dom/client';
 import{
     BrowserRouter as Router,
@@ -19,14 +19,13 @@ import { LogoutButton } from '../backend/logout';
 
 
 function App(){
-  const {isAutenticated} = useAuth0();
   return(
     <div className="app">
       <header className='login-header'>
-                {!isAuthenticated && <LoginButton/>}
-                {!isAuthenticated && <LogoutButton/>}
+                <LoginButton/>
+
+                <LogoutButton/>
             </header>
-            
       
     </div>
 
