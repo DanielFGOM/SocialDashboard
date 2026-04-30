@@ -16,16 +16,25 @@ const Users = lazy(() => import("./components/Users"));
 
 import { LoginButton } from '../backend/login';
 import { LogoutButton } from '../backend/logout';
-import { Profile } from '../backend/Profile';
+
 
 function App(){
   return(
     <div className="app">
       <header className='login-header'>
                 <LoginButton/>
-                <Profile/>
                 <LogoutButton/>
             </header>
+            <Router>
+            <Routes>
+            <Route path="/" element={<Layout/>}>
+            <Route path="/Home" element={<Home/>}/>
+            <Route path="/Posts" element={<Posts/>}/>
+            <Route path="/Users" element={<Users/>}/>
+            <Route path="/About" element={<About/>}/>
+            </Route>
+            </Routes>
+        </Router>
       
     </div>
 
