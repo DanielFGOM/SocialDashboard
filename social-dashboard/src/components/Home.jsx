@@ -13,17 +13,7 @@ function Home(){
 function Layout(){
     return (
         <>
-        <div>
-            <Router>
-            <Routes>
-            <Route path="/" element={<Layout/>}>
-            <Route path="/Home" element={<Home/>}/>
-            <Route path="/Posts" element={<Posts/>}/>
-            <Route path="/Users" element={<Users/>}/>
-            </Route>
-            </Routes>
-        </Router>
-    
+        <div> 
         <nav>
         <Link to="/Home">Home </Link>
         <Link to="/Posts">Posts </Link>

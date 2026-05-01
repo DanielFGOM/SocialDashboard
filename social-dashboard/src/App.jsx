@@ -1,8 +1,9 @@
 import React, { lazy, Suspense } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { createRoot } from 'react-dom/client';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { LoginButton } from '../backend/login';
+import { LogoutButton } from '../backend/logout';
 import{
     BrowserRouter as Router,
     Link,
@@ -16,15 +17,14 @@ const Home = lazy(() => import("./components/Home"));
 const Posts = lazy(() => import("./components/Posts"));
 const Users = lazy(() => import("./components/Users"));
 
-import { LoginButton } from '../backend/login';
-import { LogoutButton } from '../backend/logout';
+
 
 function AuthRedirect(){
     const{isAuthenticated} = useAuth0();
     const navigate = useNavigate();
 
     useEffect(() =>{
-        if(isAutheticated){
+        if(isAuthenticated){
             navigate('/Home');
         }
     },[isAuthenticated]);
@@ -36,9 +36,17 @@ function App(){
 return(
     <div className="app">
     <header className='login-header'>
-                <LoginButton/>
-
-                <LogoutButton/>
+        <Router>
+                <AuthRedirect />
+                <Routes>
+                    <Route path="/" element={<Layout/>}>
+                    <Route path="/Home" element={<Home/>}/>
+                    <Route path="/Posts" element={<Posts/>}/>
+                    <Route path="/Users" element={<Users/>}/>
+                    </Route>
+                </Routes>
+        </Router>
+    
             </header>
     
     </div>
@@ -50,19 +58,10 @@ return(
 function Layout(){
     return (
         <>
-        <div>
-            <Router>
-                <AuthRedirect />
-            <Routes>
-                <Route path="/" element={<Layout/>}>
-                <Route path="/Home" element={<Home/>}/>
-                <Route path="/Posts" element={<Posts/>}/>
-                <Route path="/Users" element={<Users/>}/>
-            </Route>
-            </Routes>
-        </Router>
-    
+        <div>    
         <nav>
+            <LoginButton/>
+            <LogoutButton/> 
         <Link to="/Home">Home </Link>
         <Link to="/Posts">Posts </Link>
         <Link to="/Users">Users </Link>
