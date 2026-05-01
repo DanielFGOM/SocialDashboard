@@ -20,14 +20,16 @@ import { LoginButton } from '../backend/login';
 import { LogoutButton } from '../backend/logout';
 
 function AuthRedirect(){
-    const{isAutheticated} = useAuth0();
+    const{isAuthenticated} = useAuth0();
     const navigate = useNavigate();
 
     useEffect(() =>{
         if(isAutheticated){
             navigate('/Home');
         }
-    },[isAutheticated]);
+    },[isAuthenticated]);
+
+    return null;
 }
 
 function App(){
@@ -50,8 +52,8 @@ function Layout(){
         <>
         <div>
             <Router>
-            <Routes>
                 <AuthRedirect />
+            <Routes>
                 <Route path="/" element={<Layout/>}>
                 <Route path="/Home" element={<Home/>}/>
                 <Route path="/Posts" element={<Posts/>}/>
